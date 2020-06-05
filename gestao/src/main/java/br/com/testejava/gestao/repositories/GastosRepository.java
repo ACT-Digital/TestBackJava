@@ -1,14 +1,11 @@
 package br.com.testejava.gestao.repositories;
 
-import br.com.testejava.gestao.model.Categoria;
 import br.com.testejava.gestao.model.Gastos;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
-import java.util.Optional;
 
 @Repository
 public class GastosRepository {
@@ -22,12 +19,12 @@ public class GastosRepository {
     }
 
     public Gastos insert(Gastos gastos) {
-        hashOperations.put("gastos", gastos.getDescricao(), gastos);
+        hashOperations.put("gastos", "gastos", gastos);
         return gastos;
     }
 
     public Map<String, Gastos> findAll() {
-        return hashOperations.entries("categoria");
+        return hashOperations.entries("gastos");
     }
 
 

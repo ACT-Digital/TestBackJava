@@ -1,7 +1,5 @@
 package br.com.testejava.gestao.model;
 
-import org.springframework.data.redis.core.RedisHash;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,17 +7,16 @@ import java.util.Date;
 public class Gastos implements Serializable {
     private static final long serialVersionUID = 1L;
 
-
     private String descricao;
     private double valor;
-    private Date data;
+    private String data;
     private String categoria;
 
-    public Gastos(String descricao, double valor, Date data, Categoria categoria) {
+    public Gastos(String descricao, double valor, String data, String categoria) {
         this.descricao = descricao;
         this.valor = valor;
-        this.data = data;
-        this.categoria = categoria == null ? null : categoria.getTipo_categoria();
+        this.data = dataFormat(data);
+        this.categoria = categoria;
     }
 
     @Override
@@ -31,6 +28,22 @@ public class Gastos implements Serializable {
         sb.append(", data=").append(data);
         sb.append('}');
         return sb.toString();
+    }
+
+    public static String dataFormat(String dt) {
+        StringBuilder formate = new StringBuilder();
+        if (dt.length() == 7) {
+            formate = formate.append("0").append(dt,0, 2);
+            formate.append("/").append(dt,2, 4);
+            formate.append("/").append(dt,4, 8);
+        }else if (dt.length() == 8){
+            formate.append(dt,0, 2);
+            formate.append("/").append(dt, 2, 4);
+            formate.append("/").append(dt,4, 8);
+        }else{
+            return "Data invalida";
+        }
+        return formate.toString();
     }
 
     public String getCategoria() {
@@ -58,12 +71,12 @@ public class Gastos implements Serializable {
     }
 
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setData(String data) {
+        this.data = dataFormat(data);
     }
 
 
