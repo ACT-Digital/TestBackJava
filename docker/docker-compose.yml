@@ -1,0 +1,14 @@
+
+version: "2"
+
+services:
+
+ java-gestao:
+  image: maven
+  volumes:
+     - "././gestao/deploy"
+  working_dir: "/deploy"
+  ports:
+     - "8080:8080"
+  command: bash -c "mvn clean && mvn install && java -jar target/GestaoDeGastos-0.0.1-SNAPSHOT.jar"
+  container_name: GestaoDeGastos
