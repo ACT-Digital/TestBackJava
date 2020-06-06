@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+
+  #MySQL
+  db:
+    image: mysql:8.0.20
+    environment:
+      MYSQL_DATABASE: 'altran'
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - '3306:3306'
+    networks:
+      - mysql-compose-network
+
+  #phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - '80:80'
+    networks:
+      - mysql-compose-network
+
+networks:
+  mysql-compose-network:
+    driver: bridge
