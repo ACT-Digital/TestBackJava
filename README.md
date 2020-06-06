@@ -9,7 +9,7 @@ Apache Maven
 Eclipse or IntelliJ Idea
 ```
 
-## Test
+## Instructions
 
 - Start the MySQL Database with Docker Compose:
 
