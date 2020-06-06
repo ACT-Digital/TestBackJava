@@ -15,7 +15,8 @@ import java.util.Date;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "paymentSequence", sequenceName = "payment_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "paymentSequence")
     @Column(length = 10)
     private Integer id;
 
@@ -31,7 +32,7 @@ public class Payment {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private User user;
+    @JoinColumn(name = "id_customer", foreignKey = @ForeignKey(name = "fk_customer_payment"))
+    private Customer customer;
 
 }
