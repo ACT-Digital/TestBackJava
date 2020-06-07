@@ -26,9 +26,18 @@ public class Customer implements Serializable {
     @Column(length = 50, nullable = false)
     private String email;
 
+    @Column(length = 20, nullable = false)
+    private String username;
+
+    @Column(length = 16, nullable = false)
+    private String password;
+
+    @Column(length = 16, nullable = false)
+    private Long card;
+
     @ManyToOne
-    @JoinColumn(name = "id_company", nullable = false, foreignKey = @ForeignKey(name = "fk_company_customer"))
-    private Company company;
+    @JoinColumn(name = "id_process", nullable = false, foreignKey = @ForeignKey(name = "fk_process_customer"))
+    private Process process;
 
     @OneToMany(mappedBy = "customer")
     private List<Payment> payments;

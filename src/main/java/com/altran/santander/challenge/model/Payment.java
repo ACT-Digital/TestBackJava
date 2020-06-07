@@ -1,5 +1,6 @@
 package com.altran.santander.challenge.model;
 
+import com.altran.santander.challenge.model.dto.request.PaymentRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,12 +29,23 @@ public class Payment implements Serializable {
     private String description;
 
     @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = false)
     private Date date;
+
+    @Column(length = 30)
+    private String category;
 
     @ManyToOne
     @JoinColumn(name = "id_customer", nullable = false, foreignKey = @ForeignKey(name = "fk_customer_payment"))
     private Customer customer;
+
+    public Payment(PaymentRequestDTO paymentRequestDTO) {
+
+        this.value = paymentRequestDTO.getValor();
+        this.description = paymentRequestDTO.getDescricao();
+        this.date = paymentRequestDTO.getData();
+
+    }
 
 }
