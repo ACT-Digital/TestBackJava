@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project Info -->
-    <groupId>com.altran</groupId>
+    <groupId>com.altran.santander</groupId>
     <artifactId>challenge</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
