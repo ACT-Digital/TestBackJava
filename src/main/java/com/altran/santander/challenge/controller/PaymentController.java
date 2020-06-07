@@ -1,8 +1,10 @@
 package com.altran.santander.challenge.controller;
 
 import com.altran.santander.challenge.model.Payment;
-import com.altran.santander.challenge.repository.PaymentRepository;
-import com.altran.santander.challenge.repository.CustomerRepository;
+import com.altran.santander.challenge.model.dto.request.PaymentRequestDTO;
+import com.altran.santander.challenge.model.dto.response.IdResponseDTO;
+import com.altran.santander.challenge.model.dto.response.PaymentResponseDTO;
+import com.altran.santander.challenge.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Transactional
@@ -18,25 +21,25 @@ import java.util.List;
 public class PaymentController {
 
     @Autowired
-    private PaymentRepository paymentRepository;
-
-    @Autowired
-    private CustomerRepository customerRepository;
+    private PaymentService paymentService;
 
     @GetMapping
-    public List<Payment> findAll() {
+    public ResponseEntity<List<PaymentResponseDTO>> findAll() {
 
-        return paymentRepository.findAll();
+        return ResponseEntity.ok(paymentService.findAll()
+                .stream()
+                .map(PaymentResponseDTO::new)
+                .collect(Collectors.toList()));
 
     }
 
     /** Funcionalidade: Integração de gastos por cartão */
     @PostMapping
-    public ResponseEntity<Payment> save(@RequestBody Payment payment, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<IdResponseDTO> save(@RequestBody PaymentRequestDTO paymentRequestDTO, UriComponentsBuilder uriBuilder) {
 
-        paymentRepository.save(payment);
+        Payment payment = paymentService.saveRequest(paymentRequestDTO);
         URI uri = uriBuilder.build("api/payment");
-        return ResponseEntity.created(uri).body(payment);
+        return ResponseEntity.created(uri).body(new IdResponseDTO(payment.getId()));
 
     }
 
