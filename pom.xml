@@ -68,6 +68,13 @@
             <version>3.0.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- Data Rest Config -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-data-rest</artifactId>
+            <version>3.0.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>
