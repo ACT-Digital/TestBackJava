@@ -20,3 +20,5 @@ $ docker-compose up
 > You need to be in the project root directory to execute.
 
 - Run in your IDE the class `ChallengeApplication` to start the server.
+
+- See the endpoints of the application in http://localhost:8080/swagger-ui.html.
