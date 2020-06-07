@@ -42,9 +42,9 @@ public class Payment implements Serializable {
 
     public Payment(PaymentRequestDTO paymentRequestDTO) {
 
-        this.value = paymentRequestDTO.getValor();
-        this.description = paymentRequestDTO.getDescricao();
-        this.date = paymentRequestDTO.getData();
+        this.value = paymentRequestDTO.getValue();
+        this.description = paymentRequestDTO.getDescription();
+        this.date = paymentRequestDTO.getDate();
 
     }
 

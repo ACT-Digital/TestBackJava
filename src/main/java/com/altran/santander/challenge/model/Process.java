@@ -31,12 +31,12 @@ public class Process implements Serializable {
     private List<Customer> customers;
 
     public enum Status {
-        CREDENTIATED, IRREGULAR
+        OK, IRREGULAR
     }
 
     public Process(ProcessRequestDTO processRequestDTO) {
 
-        this.systemName = processRequestDTO.getSistema();
+        this.systemName = processRequestDTO.getSystemName();
         this.status = processRequestDTO.getStatus();
 
     }

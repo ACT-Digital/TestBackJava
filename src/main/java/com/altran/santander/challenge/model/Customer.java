@@ -1,5 +1,6 @@
 package com.altran.santander.challenge.model;
 
+import com.altran.santander.challenge.model.dto.request.CustomerRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,5 +42,12 @@ public class Customer implements Serializable {
 
     @OneToMany(mappedBy = "customer")
     private List<Payment> payments;
+
+    public Customer(CustomerRequestDTO customerRequestDTO) {
+
+        this.name = customerRequestDTO.getName();
+        this.email = customerRequestDTO.getEmail();
+
+    }
 
 }
