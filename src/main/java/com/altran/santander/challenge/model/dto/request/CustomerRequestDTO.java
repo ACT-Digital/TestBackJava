@@ -1,5 +1,6 @@
 package com.altran.santander.challenge.model.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CustomerRequestDTO implements Serializable {
 
-    private Integer id;
-    private String nome;
+    @JsonProperty("nome")
+    private String name;
+
+    @JsonProperty("email")
     private String email;
-    private Integer codigoProcesso;
+
+    @JsonProperty("codigoprocesso")
+    private Integer processId;
 
 }

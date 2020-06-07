@@ -1,6 +1,7 @@
 package com.altran.santander.challenge.model.dto.response;
 
 import com.altran.santander.challenge.model.Payment;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,16 +15,22 @@ import java.util.Date;
 public class PaymentResponseDTO implements Serializable {
 
     private Integer id;
-    private Double valor;
-    private Integer codigoUsuario;
-    private Date data;
+
+    @JsonProperty("valor")
+    private Double value;
+
+    @JsonProperty("codigousuario")
+    private Integer customerId;
+
+    @JsonProperty("data")
+    private Date date;
 
     public PaymentResponseDTO(Payment payment) {
 
         this.id = payment.getId();
-        this.valor = payment.getValue();
-        this.codigoUsuario = payment.getCustomer().getId();
-        this.data = payment.getDate();
+        this.value = payment.getValue();
+        this.customerId = payment.getCustomer().getId();
+        this.date = payment.getDate();
 
     }
 
