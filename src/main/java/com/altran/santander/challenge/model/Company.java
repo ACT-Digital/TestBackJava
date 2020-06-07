@@ -1,4 +1,4 @@
-package com.altran.challenge.model;
+package com.altran.santander.challenge.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

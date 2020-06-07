@@ -1,7 +1,7 @@
-package com.altran.challenge.controller;
+package com.altran.santander.challenge.controller;
 
-import com.altran.challenge.model.Company;
-import com.altran.challenge.repository.CompanyRepository;
+import com.altran.santander.challenge.model.Company;
+import com.altran.santander.challenge.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;

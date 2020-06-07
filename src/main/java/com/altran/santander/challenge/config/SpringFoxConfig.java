@@ -1,4 +1,4 @@
-package com.altran.challenge.config;
+package com.altran.santander.challenge.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

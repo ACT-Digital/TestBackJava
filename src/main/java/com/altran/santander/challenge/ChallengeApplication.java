@@ -1,4 +1,4 @@
-package com.altran.challenge;
+package com.altran.santander.challenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

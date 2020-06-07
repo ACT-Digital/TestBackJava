@@ -1,6 +1,6 @@
-package com.altran.challenge.repository;
+package com.altran.santander.challenge.repository;
 
-import com.altran.challenge.model.Customer;
+import com.altran.santander.challenge.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
