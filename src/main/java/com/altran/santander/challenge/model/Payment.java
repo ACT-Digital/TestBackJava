@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Payment {
+public class Payment implements Serializable {
 
     @Id
     @SequenceGenerator(name = "paymentSequence", sequenceName = "payment_seq", allocationSize = 1)
