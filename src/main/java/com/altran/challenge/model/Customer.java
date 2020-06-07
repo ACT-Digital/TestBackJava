@@ -19,17 +19,17 @@ public class Customer {
     @Column(length = 8)
     private Integer id;
 
-    @Column(length = 45)
+    @Column(length = 45, nullable = false)
     private String name;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "id_company", nullable = false, foreignKey = @ForeignKey(name = "fk_company_customer"))
+    private Company company;
 
     @OneToMany(mappedBy = "customer")
     private List<Payment> payments;
-
-    @ManyToOne
-    @JoinColumn(name = "id_company", foreignKey = @ForeignKey(name = "fk_company_customer"))
-    private Company company;
 
 }

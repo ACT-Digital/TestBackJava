@@ -1,5 +1,6 @@
 package com.altran.challenge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,15 +20,16 @@ public class Company {
     @Column(length = 6)
     private Integer id;
 
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String name;
 
-    @Column(length = 16)
+    @Column(length = 16, nullable = false)
     private String login;
 
-    @Column(length = 16)
+    @Column(length = 16, nullable = false)
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Customer> customers;
 

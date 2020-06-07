@@ -32,7 +32,7 @@ public class Payment {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "id_customer", foreignKey = @ForeignKey(name = "fk_customer_payment"))
+    @JoinColumn(name = "id_customer", nullable = false, foreignKey = @ForeignKey(name = "fk_customer_payment"))
     private Customer customer;
 
 }
