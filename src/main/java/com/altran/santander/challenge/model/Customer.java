@@ -47,6 +47,9 @@ public class Customer implements Serializable {
 
         this.name = customerRequestDTO.getName();
         this.email = customerRequestDTO.getEmail();
+        this.username = customerRequestDTO.getUsername();
+        this.password = customerRequestDTO.getPassword();
+        this.card = customerRequestDTO.getCard();
 
     }
 
