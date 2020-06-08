@@ -6,13 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentRequestDTO implements Serializable {
+public class PaymentRequestDTO {
 
     @JsonProperty("descricao")
     private String description;
@@ -25,6 +24,9 @@ public class PaymentRequestDTO implements Serializable {
 
     @JsonProperty("data")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date date;
+    private Calendar date;
+
+    @JsonProperty("categoria")
+    private String category;
 
 }

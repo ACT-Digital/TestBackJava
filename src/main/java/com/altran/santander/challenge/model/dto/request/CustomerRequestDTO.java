@@ -15,10 +15,18 @@ public class CustomerRequestDTO implements Serializable {
     @JsonProperty("nome")
     private String name;
 
-    @JsonProperty("email")
     private String email;
 
-    @JsonProperty("codigoprocesso")
+    @JsonProperty("usuario")
+    private String username;
+
+    @JsonProperty("senha")
+    private String password;
+
+    @JsonProperty("cartao")
+    private Long card;
+
+    @JsonProperty("codigosistema")
     private Integer processId;
 
 }
