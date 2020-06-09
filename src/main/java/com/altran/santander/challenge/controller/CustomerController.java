@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    private ResponseEntity<IdResponseDTO> save(@RequestBody CustomerRequestDTO customerRequestDTO, UriComponentsBuilder uriBuilder) {
+    private ResponseEntity<IdResponseDTO> save(@RequestBody @Valid CustomerRequestDTO customerRequestDTO, UriComponentsBuilder uriBuilder) {
 
         Customer customer = customerService.saveRequest(customerRequestDTO);
         URI uri = uriBuilder.build("api/customer");

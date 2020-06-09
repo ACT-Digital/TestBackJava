@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -18,13 +19,16 @@ public class CardPaymentIntegrationRequestDTO implements Serializable {
     private String description;
 
     @JsonProperty("valor")
+    @NotNull(message = "Valor é obrigatório")
     private Double value;
 
     @JsonProperty("codigousuario")
+    @NotNull(message = "Código do Usuário é obrigatório")
     private Integer costumerId;
 
     @JsonProperty("data")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @NotNull(message = "Data é obrigatória")
     private Calendar date;
 
 }

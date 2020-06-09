@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +35,7 @@ public class ProcessController {
     }
 
     @PostMapping
-    public ResponseEntity<IdResponseDTO> save(@RequestBody ProcessRequestDTO processRequestDTO, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<IdResponseDTO> save(@RequestBody @Valid ProcessRequestDTO processRequestDTO, UriComponentsBuilder uriBuilder) {
 
         Process process = processService.saveRequest(processRequestDTO);
         URI uri = uriBuilder.build("api/process");

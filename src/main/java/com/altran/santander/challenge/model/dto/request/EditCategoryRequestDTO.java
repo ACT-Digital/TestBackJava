@@ -5,12 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class EditCategoryRequestDTO {
 
     @JsonProperty("categoria")
+    @NotNull(message = "Categoria é obrigatória")
     private String category;
 
 }

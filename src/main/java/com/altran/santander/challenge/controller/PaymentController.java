@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.Calendar;
 import java.util.List;
@@ -39,7 +40,7 @@ public class PaymentController {
 
     @PostMapping
     public ResponseEntity<IdResponseDTO> save(
-            @RequestBody PaymentRequestDTO paymentRequestDTO,
+            @RequestBody @Valid PaymentRequestDTO paymentRequestDTO,
             UriComponentsBuilder uriBuilder) {
 
         Payment payment = paymentService.saveRequest(paymentRequestDTO);
@@ -50,7 +51,7 @@ public class PaymentController {
 
     @PostMapping("/card-payment-integration")
     public ResponseEntity<IdResponseDTO> cardPaymentIntegration(
-            @RequestBody CardPaymentIntegrationRequestDTO cardPaymentIntegrationRequestDTO,
+            @RequestBody @Valid CardPaymentIntegrationRequestDTO cardPaymentIntegrationRequestDTO,
             UriComponentsBuilder uriBuilder) {
 
         Payment payment = paymentService.saveIntegration(cardPaymentIntegrationRequestDTO);
@@ -87,7 +88,7 @@ public class PaymentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<PaymentResponseDTO> editCategory(
-            @RequestBody EditCategoryRequestDTO editCategoryRequestDTO,
+            @RequestBody @Valid EditCategoryRequestDTO editCategoryRequestDTO,
             @PathVariable Integer id) {
 
         if (!paymentService.existsPaymentId(id)) {
