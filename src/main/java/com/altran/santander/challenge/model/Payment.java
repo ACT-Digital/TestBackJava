@@ -18,8 +18,7 @@ import java.util.Calendar;
 public class Payment implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "paymentSequence", sequenceName = "payment_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "paymentSequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 10)
     private Integer id;
 

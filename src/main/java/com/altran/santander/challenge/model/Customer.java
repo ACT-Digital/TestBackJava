@@ -16,8 +16,7 @@ import java.util.List;
 public class Customer implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "customerSequence", sequenceName = "customer_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "customerSequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 8)
     private Integer id;
 

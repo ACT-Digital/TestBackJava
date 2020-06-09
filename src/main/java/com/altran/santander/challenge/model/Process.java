@@ -16,15 +16,14 @@ import java.util.List;
 public class Process implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "processSequence", sequenceName = "process_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "processSequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 6)
     private Integer id;
 
     @Column(name = "system_name", length = 30, nullable = false)
     private String systemName;
 
-    @Column
+    @Column(length = 9, nullable = false)
     private Status status;
 
     @OneToMany(mappedBy = "process")
