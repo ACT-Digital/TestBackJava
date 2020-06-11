@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 import com.lucasrodrigues.gestao_de_gastos.querys.repository.UsuarioQueryRepository;
+import com.lucasrodrigues.gestao_de_gastos.querys.services.exceptions.ResourceNotFoundException;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,9 +32,6 @@ public class UsuarioQueryService {
 	@ApiOperation(value = "Retorna um objeto do Tipo Usuario")
 	synchronized public Usuario findById(String id){
 		Optional<Usuario> opUser= userQueryRepo.findById(id);
-		if(opUser.get() != null){
-			return opUser.get();
-		}
-		return null;
+		return  opUser.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 }
