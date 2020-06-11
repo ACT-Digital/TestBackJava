@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,21 +40,38 @@ public class UsuarioQueryResource {
 		List<UsuarioQueryDTO> result = userQueryService.findAll().stream().map( x -> new UsuarioQueryDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(result);
 	}
+	@ApiOperation(value = "Retorna um objeto  do tipo UsuarioQueryDTO ")
+	@GetMapping(value = "/{id}")
+	public ResponseEntity <UsuarioQueryDTO> findById(@PathVariable String id){
+		UsuarioQueryDTO result = new UsuarioQueryDTO(userQueryService.findById(id));
+		return ResponseEntity.ok().body(result);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@ApiOperation(value = "Retorna uma Stirng com um tutorial para ultilizar a API")
     private String getPassosAPI() {
     	StringBuilder sb = new StringBuilder();
     	sb.append("<body style='font-family: arial , sans-serif;'>");
     	sb.append("<h2> TUTORIAL PARA ULTILIZAR A API DE <span style='color: green'>GESTÃO DE GASTOS</span> </h2>");
-    	
+    	sb.append("<h4>{} -> informe um valor</h4>");
     	
     	sb.append("<h3>Executar com Swagger</h3>");
     	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/ -> endPoint raiz do usuario</p>\n");
     	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/findall ->  retorna um JSON com todos os usuarios\n</p>");
+    	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/{seuid} ->  retorna um JSON com um usuario\n</p>");
     	sb.append("\n<br>" ); 
     	sb.append("<h3>Sem o Swagger\n</h3>" );
     	sb.append("<p>http://localhost:8080/usuarios/ -> endPoint raiz do usuario\n</p>");
     	sb.append("<p>http://localhost:8080/usuarios/findall -> retorna um JSON com todos os usuarios\n</p>");
+    	sb.append("<p>http://localhost:8080/usuarios/{seuid} ->  retorna um JSON com um usuario\n</p>");
     	sb.append("</body>");
     	return sb.toString();
     }

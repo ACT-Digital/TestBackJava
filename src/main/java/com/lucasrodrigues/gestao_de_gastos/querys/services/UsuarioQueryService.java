@@ -1,6 +1,7 @@
 package com.lucasrodrigues.gestao_de_gastos.querys.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,14 @@ public class UsuarioQueryService {
 	@ApiOperation(value = "Retorna uma lista do Tipo Usuario")
 	synchronized public List<Usuario>findAll(){
 		return userQueryRepo.findAll();
+	}
+	
+	@ApiOperation(value = "Retorna um objeto do Tipo Usuario")
+	synchronized public Usuario findById(String id){
+		Optional<Usuario> opUser= userQueryRepo.findById(id);
+		if(opUser.get() != null){
+			return opUser.get();
+		}
+		return null;
 	}
 }
