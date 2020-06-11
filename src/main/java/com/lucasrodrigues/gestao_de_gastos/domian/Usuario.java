@@ -1,8 +1,11 @@
 package com.lucasrodrigues.gestao_de_gastos.domian;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "tb_user")
@@ -15,7 +18,8 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String email;
 	private String senha;
-	
+	@DBRef(lazy = true)
+	private List<Gastos> gastos = new ArrayList<>();
 	
 	public Usuario(String codigo, String nome, String email, String senha) {
 		this.codigo = codigo;
@@ -58,6 +62,10 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Gastos> getGastos() {
+		return gastos;
 	}
 
 	@Override

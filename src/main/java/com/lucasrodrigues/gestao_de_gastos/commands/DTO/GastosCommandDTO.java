@@ -1,4 +1,4 @@
-package com.lucasrodrigues.gestao_de_gastos.command.DTO;
+package com.lucasrodrigues.gestao_de_gastos.commands.DTO;
 
 import java.time.Instant;
 
