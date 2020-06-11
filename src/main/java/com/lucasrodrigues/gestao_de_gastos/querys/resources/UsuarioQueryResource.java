@@ -38,14 +38,14 @@ public class UsuarioQueryResource {
 	@ApiOperation(value = "Retorna uma lista do tipo UsuarioQueryDTO com todos os usuarios")
 	@GetMapping(value = "/findall")
 	public ResponseEntity<List<UsuarioQueryDTO>> findAll(){
-		List<UsuarioQueryDTO> result = userQueryService.findAll().stream().map( x -> new UsuarioQueryDTO(x)).collect(Collectors.toList());
+		List<UsuarioQueryDTO> result = userQueryService.findAll().stream().map( x -> new UsuarioQueryDTO(x,true)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(result);
 	}
 	@ApiOperation(value = "Retorna um objeto  do tipo UsuarioQueryDTO ")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity <UsuarioQueryDTO> findById(@PathVariable String id){
 		Usuario user = userQueryService.findById(id);
-		UsuarioQueryDTO result = new UsuarioQueryDTO(user );
+		UsuarioQueryDTO result = new UsuarioQueryDTO(user,true);
 		return ResponseEntity.ok().body(result);
 	}
 	

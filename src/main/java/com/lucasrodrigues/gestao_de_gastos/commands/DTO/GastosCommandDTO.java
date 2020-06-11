@@ -1,19 +1,25 @@
 package com.lucasrodrigues.gestao_de_gastos.commands.DTO;
 
-import java.time.Instant;
+import java.util.Date;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
+import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
 
 public class GastosCommandDTO {
 
 	private String descricao;
 	private Double valor;
-	private Instant data;
+	private Date data;
+	private UsuarioQueryDTO cliente;
+	
 	
 	public GastosCommandDTO(Gastos obj) {
 		descricao = obj.getDescricao();
 		valor = obj.getValor();
 		data = obj.getData();
+		cliente = obj.getCliente();
 	}
 
 	public String getDescricao() {
@@ -32,12 +38,20 @@ public class GastosCommandDTO {
 		this.valor = valor;
 	}
 
-	public Instant getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Instant data) {
+	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public UsuarioQueryDTO getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(UsuarioQueryDTO cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package com.lucasrodrigues.gestao_de_gastos.domian;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -18,19 +18,19 @@ public class Gastos implements Serializable {
 	private String codigo;
 	private String descricao;
 	private Double valor;
-	private Instant data;
-	@DBRef(lazy = true)
+	private Date data;
 	private UsuarioQueryDTO cliente;
 	
 	public Gastos() {
 
 	}
 
-	public Gastos(String codigo, String descricao, Double valor, Instant data,UsuarioQueryDTO cliente) {
+	public Gastos(String codigo, String descricao, Double valor, Date data,UsuarioQueryDTO cliente) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.valor = valor;
 		this.data = data;
+		this.cliente = cliente;
 	}
 
 	public String getCodigo() {
@@ -57,11 +57,11 @@ public class Gastos implements Serializable {
 		this.valor = valor;
 	}
 
-	public Instant getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Instant data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

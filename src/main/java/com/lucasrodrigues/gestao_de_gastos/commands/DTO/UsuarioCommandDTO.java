@@ -1,16 +1,22 @@
 package com.lucasrodrigues.gestao_de_gastos.commands.DTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 
 public class UsuarioCommandDTO {
 	private String nome;
 	private String email;
 	private String senha;
+	private List<Gastos> gastos = new ArrayList<>();
 	
 	public UsuarioCommandDTO(Usuario obj) {
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
 		this.senha = obj.getSenha();
+		this.gastos = obj.getGastos();
 	}
 
 	public String getNome() {
@@ -35,6 +41,10 @@ public class UsuarioCommandDTO {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Gastos> getGastos() {
+		return gastos;
 	}
 
 	@Override

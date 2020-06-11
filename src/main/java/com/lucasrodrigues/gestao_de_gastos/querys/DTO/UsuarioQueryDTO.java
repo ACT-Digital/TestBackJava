@@ -1,7 +1,10 @@
 package com.lucasrodrigues.gestao_de_gastos.querys.DTO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 
 import io.swagger.annotations.Api;
@@ -14,11 +17,15 @@ public class UsuarioQueryDTO implements Serializable {
 	private String codigo;
 	private String nome;
 	private String email;
+	private List<Gastos> gastos = new ArrayList<>();
 	
-	public UsuarioQueryDTO(Usuario obj) {
+	
+	public UsuarioQueryDTO(Usuario obj,Boolean adcLista) {
 		this.codigo = obj.getCodigo();
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
+		if(adcLista)
+		this.gastos = obj.getGastos();
 	}
 
 	public String getCodigo() {
@@ -44,6 +51,13 @@ public class UsuarioQueryDTO implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public List<Gastos> getGastos() {
+		return gastos;
+	}
+
+
+
 
 	@Override
 	public int hashCode() {
