@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Profile;
 import com.lucasrodrigues.gestao_de_gastos.commands.repository.UsuarioCommandRepository;
 import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
-import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
