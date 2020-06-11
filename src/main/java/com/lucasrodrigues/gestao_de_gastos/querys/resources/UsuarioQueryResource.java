@@ -1,6 +1,7 @@
 package com.lucasrodrigues.gestao_de_gastos.querys.resources;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
+import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
 import com.lucasrodrigues.gestao_de_gastos.querys.services.UsuarioQueryService;
 
 import io.swagger.annotations.Api;
@@ -28,9 +29,9 @@ public class UsuarioQueryResource {
 	
 	@ApiOperation(value = "Retorna uma lista com todos os usuarios")
 	@GetMapping
-	public ResponseEntity<List<Usuario>> findAll(){
+	public ResponseEntity<List<UsuarioQueryDTO>> findAll(){
 		
-		List<Usuario> result = userQueryService.findAll();
+		List<UsuarioQueryDTO> result = userQueryService.findAll().stream().map( x -> new UsuarioQueryDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(result);
 	}
 }
