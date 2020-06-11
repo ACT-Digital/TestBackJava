@@ -32,6 +32,6 @@ public class UsuarioQueryService {
 	@ApiOperation(value = "Retorna um objeto do Tipo Usuario")
 	synchronized public Usuario findById(String id){
 		Optional<Usuario> opUser= userQueryRepo.findById(id);
-		return  opUser.orElseThrow(()-> new ResourceNotFoundException(id));
+		return  opUser.orElseThrow(()->new ResourceNotFoundException("Objeto nao encontrado"));
 	}
 }

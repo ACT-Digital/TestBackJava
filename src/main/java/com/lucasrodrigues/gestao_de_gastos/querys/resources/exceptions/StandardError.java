@@ -1,8 +1,9 @@
 package com.lucasrodrigues.gestao_de_gastos.querys.resources.exceptions;
 
+import java.io.Serializable;
 import java.time.Instant;
 
-public class StandardError extends RuntimeException {
+public class StandardError implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

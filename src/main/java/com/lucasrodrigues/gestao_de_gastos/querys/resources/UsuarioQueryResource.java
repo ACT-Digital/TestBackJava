@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
 import com.lucasrodrigues.gestao_de_gastos.querys.services.UsuarioQueryService;
 
@@ -43,7 +44,8 @@ public class UsuarioQueryResource {
 	@ApiOperation(value = "Retorna um objeto  do tipo UsuarioQueryDTO ")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity <UsuarioQueryDTO> findById(@PathVariable String id){
-		UsuarioQueryDTO result = new UsuarioQueryDTO(userQueryService.findById(id));
+		Usuario user = userQueryService.findById(id);
+		UsuarioQueryDTO result = new UsuarioQueryDTO(user );
 		return ResponseEntity.ok().body(result);
 	}
 	
