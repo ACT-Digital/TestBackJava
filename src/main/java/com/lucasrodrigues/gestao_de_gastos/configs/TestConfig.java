@@ -30,6 +30,7 @@ public class TestConfig implements CommandLineRunner{
 	@ApiOperation(value = "Metodo executado quando a aplicação é iniciada")
 	@Override
 	public void run(String... args) throws Exception {
+		userCommandRepo.deleteAll();
 		userCommandRepo.saveAll(getListUsuarios());
 		
 	}
