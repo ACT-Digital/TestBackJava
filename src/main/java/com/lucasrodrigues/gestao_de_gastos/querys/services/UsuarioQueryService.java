@@ -35,9 +35,5 @@ public class UsuarioQueryService {
 		return  opUser.orElseThrow(()->new ResourceNotFoundException("Objeto nao encontrado"));
 	}
 	
-	@ApiOperation(value = "Insere um Usuario")
-	synchronized public Usuario insert(Usuario usuario){
-		Optional<Usuario> opUser= userQueryRepo.findById(id);
-		return  opUser.orElseThrow(()->new ResourceNotFoundException("Objeto nao encontrado"));
-	}
+	
 }

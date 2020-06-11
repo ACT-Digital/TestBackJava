@@ -11,10 +11,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.lucasrodrigues.gestao_de_gastos.querys.services.exceptions.ResourceNotFoundException;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "Controla as escessoes de ResourceNotFoundException")
 @ControllerAdvice
 public class RessourceExceptionHandler {
 
-	@ExceptionHandler(ResourceNotFoundException.class) //interceptar a requisição que gerou a excessao
+	@ApiOperation(value = "Intercepta a requisição que gerou a excecao")
+	@ExceptionHandler(ResourceNotFoundException.class) 
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request){
 		String error = "Resource not found";
 		HttpStatus status = HttpStatus.NOT_FOUND;

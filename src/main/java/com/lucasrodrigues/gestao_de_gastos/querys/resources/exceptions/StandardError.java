@@ -3,6 +3,9 @@ package com.lucasrodrigues.gestao_de_gastos.querys.resources.exceptions;
 import java.io.Serializable;
 import java.time.Instant;
 
+import io.swagger.annotations.Api;
+
+@Api(value = "Classe que persiste os dados de uma excessao")
 public class StandardError implements Serializable {
 
 	private static final long serialVersionUID = 1L;
