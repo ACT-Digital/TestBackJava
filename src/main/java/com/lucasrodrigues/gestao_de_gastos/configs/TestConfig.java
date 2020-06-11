@@ -1,7 +1,6 @@
 package com.lucasrodrigues.gestao_de_gastos.configs;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +11,7 @@ import com.lucasrodrigues.gestao_de_gastos.commands.repository.GastosCommandRepo
 import com.lucasrodrigues.gestao_de_gastos.commands.repository.UsuarioCommandRepository;
 import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
-import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
+import com.lucasrodrigues.gestao_de_gastos.querys.DTO.ClienteDTO;
 import com.lucasrodrigues.gestao_de_gastos.utils.DataUtil;
 
 import io.swagger.annotations.Api;
@@ -43,8 +42,9 @@ public class TestConfig implements CommandLineRunner{
 		userCommandRepo.saveAll( Arrays.asList(u1,u2));
 		
 		gastosCommandRepo.deleteAll();
-		Gastos g1 = new Gastos(null, "super mercado sp", 40.00, DataUtil.convert("2020-06-11", DataUtil.UTC), new UsuarioQueryDTO(u1,false));
-		Gastos g2 = new Gastos(null, "empregado", 998.00, DataUtil.convert("2020-04-04", DataUtil.UTC), new UsuarioQueryDTO(u1,false));
+		ClienteDTO cldto1 = new ClienteDTO(u1);
+		Gastos g1 = new Gastos(null, "super mercado sp", 40.00, DataUtil.convert("2019-06-20T21:53:07Z", DataUtil.UTC), cldto1);
+		Gastos g2 = new Gastos(null, "empregado", 998.00, DataUtil.convert("2019-06-20T21:53:07Z", DataUtil.UTC), cldto1);
 	
 		gastosCommandRepo.saveAll(Arrays.asList(g1,g2));
 		

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
 import com.lucasrodrigues.gestao_de_gastos.querys.services.UsuarioQueryService;
@@ -49,6 +50,13 @@ public class UsuarioQueryResource {
 		return ResponseEntity.ok().body(result);
 	}
 	
+	@ApiOperation(value = "Retorna todos os gastos do cliente")
+	@GetMapping(value = "/{id}/gastos")
+	public ResponseEntity <List<Gastos>> findGastosById(@PathVariable String id){
+		Usuario user = userQueryService.findById(id);
+		return ResponseEntity.ok().body(user.getGastos());
+	}
+	
 	
 	
 	
@@ -69,11 +77,13 @@ public class UsuarioQueryResource {
     	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/ -> endPoint raiz do usuario</p>\n");
     	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/findall ->  retorna um JSON com todos os usuarios\n</p>");
     	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/{seuid} ->  retorna um JSON com um usuario\n</p>");
+    	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/{seuid}/gastos ->  retorna um JSON com Todos os seus gastos\n</p>");
     	sb.append("\n<br>" ); 
     	sb.append("<h3>Sem o Swagger\n</h3>" );
     	sb.append("<p>http://localhost:8080/usuarios/ -> endPoint raiz do usuario\n</p>");
     	sb.append("<p>http://localhost:8080/usuarios/findall -> retorna um JSON com todos os usuarios\n</p>");
     	sb.append("<p>http://localhost:8080/usuarios/{seuid} ->  retorna um JSON com um usuario\n</p>");
+    	sb.append("<p>http://localhost:8080/usuarios/{seuid}/gastos ->  retorna um JSON com Todos os seus gastos\n</p>");
     	sb.append("</body>");
     	return sb.toString();
     }

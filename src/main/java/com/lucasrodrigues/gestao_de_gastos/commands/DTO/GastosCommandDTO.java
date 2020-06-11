@@ -2,19 +2,16 @@ package com.lucasrodrigues.gestao_de_gastos.commands.DTO;
 
 import java.util.Date;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-
 import com.lucasrodrigues.gestao_de_gastos.domian.Gastos;
-import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
+import com.lucasrodrigues.gestao_de_gastos.querys.DTO.ClienteDTO;
 
 public class GastosCommandDTO {
 
 	private String descricao;
 	private Double valor;
 	private Date data;
-	private UsuarioQueryDTO cliente;
-	
-	
+	private ClienteDTO cliente;
+
 	public GastosCommandDTO(Gastos obj) {
 		descricao = obj.getDescricao();
 		valor = obj.getValor();
@@ -46,11 +43,11 @@ public class GastosCommandDTO {
 		this.data = data;
 	}
 
-	public UsuarioQueryDTO getCliente() {
+	public ClienteDTO getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(UsuarioQueryDTO cliente) {
+	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
 	}
 
@@ -90,6 +87,5 @@ public class GastosCommandDTO {
 			return false;
 		return true;
 	}
-	
-	
+
 }

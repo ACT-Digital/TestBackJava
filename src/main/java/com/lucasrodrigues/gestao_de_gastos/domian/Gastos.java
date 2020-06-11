@@ -3,11 +3,13 @@ package com.lucasrodrigues.gestao_de_gastos.domian;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.lucasrodrigues.gestao_de_gastos.querys.DTO.UsuarioQueryDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lucasrodrigues.gestao_de_gastos.querys.DTO.ClienteDTO;
 
 @Document(collection  = "tb_gastos")
 public class Gastos implements Serializable {
@@ -19,13 +21,14 @@ public class Gastos implements Serializable {
 	private String descricao;
 	private Double valor;
 	private Date data;
-	private UsuarioQueryDTO cliente;
+	
+	private ClienteDTO cliente;
 	
 	public Gastos() {
 
 	}
 
-	public Gastos(String codigo, String descricao, Double valor, Date data,UsuarioQueryDTO cliente) {
+	public Gastos(String codigo, String descricao, Double valor, Date data, ClienteDTO cliente) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.valor = valor;
@@ -57,6 +60,7 @@ public class Gastos implements Serializable {
 		this.valor = valor;
 	}
 
+	@JsonFormat
 	public Date getData() {
 		return data;
 	}
@@ -65,11 +69,11 @@ public class Gastos implements Serializable {
 		this.data = data;
 	}
 
-	public UsuarioQueryDTO getCliente() {
+	public ClienteDTO getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(UsuarioQueryDTO cliente) {
+	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
 	}
 
