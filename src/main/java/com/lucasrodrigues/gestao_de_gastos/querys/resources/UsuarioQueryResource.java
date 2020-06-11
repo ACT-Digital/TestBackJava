@@ -15,7 +15,7 @@ import com.lucasrodrigues.gestao_de_gastos.querys.services.UsuarioQueryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "endPoint para as query do usuario")
+@Api(value = "EndPoint para as query do usuario")
 @RestController
 @RequestMapping(value = "/usuarios")
 public class UsuarioQueryResource {
@@ -27,11 +27,34 @@ public class UsuarioQueryResource {
 		this.userQueryService = userQueryService;
 	}
 	
-	@ApiOperation(value = "Retorna uma lista com todos os usuarios")
+	@ApiOperation(value = "EndPoint 'Raiz' dos usuarios")
 	@GetMapping
+	public String index(){
+	   return getPassosAPI();
+	}
+	
+	@ApiOperation(value = "Retorna uma lista do tipo UsuarioQueryDTO com todos os usuarios")
+	@GetMapping(value = "/findall")
 	public ResponseEntity<List<UsuarioQueryDTO>> findAll(){
-		
 		List<UsuarioQueryDTO> result = userQueryService.findAll().stream().map( x -> new UsuarioQueryDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(result);
 	}
+	
+	@ApiOperation(value = "Retorna uma Stirng com um tutorial para ultilizar a API")
+    private String getPassosAPI() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("<body style='font-family: arial , sans-serif;'>");
+    	sb.append("<h2> TUTORIAL PARA ULTILIZAR A API DE <span style='color: green'>GESTÃO DE GASTOS</span> </h2>");
+    	
+    	
+    	sb.append("<h3>Executar com Swagger</h3>");
+    	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/ -> endPoint raiz do usuario</p>\n");
+    	sb.append("<p>http://localhost:8080/swagger-ui.html#/usuarios/findall ->  retorna um JSON com todos os usuarios\n</p>");
+    	sb.append("\n<br>" ); 
+    	sb.append("<h3>Sem o Swagger\n</h3>" );
+    	sb.append("<p>http://localhost:8080/usuarios/ -> endPoint raiz do usuario\n</p>");
+    	sb.append("<p>http://localhost:8080/usuarios/findall -> retorna um JSON com todos os usuarios\n</p>");
+    	sb.append("</body>");
+    	return sb.toString();
+    }
 }

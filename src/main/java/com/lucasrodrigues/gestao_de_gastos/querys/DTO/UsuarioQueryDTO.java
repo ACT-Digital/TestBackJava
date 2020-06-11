@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 
+import io.swagger.annotations.Api;
+
+@Api(value = "Classe para a tansferencia de dados customizado das querys, referente o @Document Usuario")
 public class UsuarioQueryDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;

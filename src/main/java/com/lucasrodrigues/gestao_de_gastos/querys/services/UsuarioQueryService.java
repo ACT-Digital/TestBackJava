@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.lucasrodrigues.gestao_de_gastos.domian.Usuario;
 import com.lucasrodrigues.gestao_de_gastos.querys.repository.UsuarioQueryRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "Classe de serviço para fazer querys dos usuarios")
 @Service
 public class UsuarioQueryService {
 
@@ -18,7 +22,8 @@ public class UsuarioQueryService {
 		this.userQueryRepo = userQueryRepo;
 	}
 	
-	public List<Usuario>findAll(){
+	@ApiOperation(value = "Retorna uma lista do Tipo Usuario")
+	synchronized public List<Usuario>findAll(){
 		return userQueryRepo.findAll();
 	}
 }
